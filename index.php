@@ -183,7 +183,7 @@
                     color: color,
                     image_name: imageName
                 },
-                success: function (e, data) {
+                success: function (data) {
                     console.log(data);
                     if (data.error) {
                         $('.alert-danger').text(data.error);
