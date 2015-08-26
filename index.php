@@ -59,7 +59,7 @@
                 <input id="fileupload" type="file" name="files" data-url="upload.php">
                 <hr/>
 
-                <div class="center-block">
+                <div class="text-center center-block">
                     <img src="" alt="" class="img-thumbnail img-responsive img-source" style="display: none">
                 </div>
 
@@ -88,7 +88,7 @@
                     <h3>Result</h3>
                 </div>
 
-                <div class="center-block">
+                <div class="text-center center-block">
                     <img src="" alt="" class="img-thumbnail img-responsive img-result" style="display: none">
                 </div>
             </div>
