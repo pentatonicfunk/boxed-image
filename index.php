@@ -138,7 +138,7 @@
                         $('.alert-danger').show();
                     } else {
                         imageName = file.name;
-                        $('.img-source').attr('src', file.url);
+                        $('.img-source').attr('src', file.thumbnailUrl);
                         $('.img-source').show();
 
                         //show form
@@ -189,6 +189,7 @@
                         $('.alert-danger').text(data.error);
                         $('.alert-danger').show();
                     } else {
+                        $('.alert-danger').hide();
                         $('.img-result').attr('src', data.url);
                         $('.img-result').show();
                     }

@@ -10,6 +10,8 @@ try {
 
     $width = $_POST['width'];
     $color = $_POST['color'];
+
+    $imageOri = dirname(__FILE__) . '/' . $_SESSION['file_name'];
     $result['width'] = $width;
     $result['color'] = $color;
 } catch (Exception $e) {
