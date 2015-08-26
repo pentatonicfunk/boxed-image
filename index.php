@@ -87,6 +87,10 @@
             submit : function(e, data) {
                 $('.bg-danger').hide();
                 $('.img-source').hide();
+                $('.progress-bar').css(
+                    'width',
+                    0 + '%'
+                );
             },
             done: function (e, data) {
                 $.each(data.result.files, function (index, file) {
