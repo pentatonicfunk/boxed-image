@@ -72,7 +72,7 @@
                     </div>
                     <div class="input-group demo2">
                         <span class="input-group-addon">background color</span>
-                        <input type="text" value="#ffffff" class="form-control" name="background color"/>
+                        <input type="text" value="#ffffff" class="form-control" name="color"/>
                         <span class="input-group-addon coloraddon"><i></i></span>
                     </div>
                     <br/>
@@ -162,7 +162,7 @@
                 return false;
             }
             if (!color) {
-                $('.alert-danger').text('Invalid width');
+                $('.alert-danger').text('Invalid color');
                 $('.alert-danger').show();
                 return false;
             }
