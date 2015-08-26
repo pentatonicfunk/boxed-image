@@ -77,6 +77,9 @@ try {
     $image_p = imagecreatetruecolor($width, $height);
     imagecopyresampled($image_p, $background, 0, 0, 0, 0, $width, $height, $widthOri, $heightOri);
 
+    if (!is_dir(dirname(__FILE__) . '/files/' . session_id() . '/boxed/'))
+        mkdir(dirname(__FILE__) . '/files/' . session_id() . '/boxed/', 0777, true);
+
     $res = imagejpeg($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/' . $_SESSION['file_name'], 96);
 
     if (!$res)
