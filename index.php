@@ -40,54 +40,62 @@
     </nav>
 
     <div id="page-wrapper" style="margin: 0">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="center-block">
-                        <h3>Upload</h3>
-                    </div>
-
-                    <div class="alert alert-danger" role="alert" style="display: none">
-                    </div>
-
-                    <div class="progress">
-                        <div class="upload-progress progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-                            Upload Progress
-                        </div>
-                    </div>
-
-                    <input id="fileupload" type="file" name="files" data-url="upload.php">
-                    <hr/>
-
-                    <div class="center-block">
-                        <img src="" alt="" class="img-thumbnail img-responsive img-source" style="display: none">
-                    </div>
-
-                    <hr>
-                    <form class="form-horizontal box-form" style="display: none">
-                        <div class="input-group">
-                            <span class="input-group-addon">width</span>
-                            <input type="text" class="form-control" aria-label="Width in pixel" name="width">
-                            <span class="input-group-addon">px</span>
-                        </div>
-                        <div class="input-group demo2">
-                            <span class="input-group-addon">color</span>
-                            <input type="text" value="#ffffff" class="form-control" name="color"/>
-                            <span class="input-group-addon"><i></i></span>
-                        </div>
-                        <div class="input-group">
-                            <input type="submit" class="form-control" name="submit" value="Box It !">
-                        </div>
-                    </form>
-
-
-
+        <div class="row">
+            <div class="col-md-6">
+                <div class="center-block">
+                    <h3>Upload</h3>
                 </div>
-                <div class="col-md-6">
-                    <div class="center-block">
-                        <h3>Result</h3>
+
+                <div class="alert alert-danger" role="alert" style="display: none">
+                </div>
+
+                <div class="progress">
+                    <div class="upload-progress progress-bar progress-bar-striped active" role="progressbar"
+                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        Upload Progress
                     </div>
+                </div>
+
+                <input id="fileupload" type="file" name="files" data-url="upload.php">
+                <hr/>
+
+                <div class="center-block">
+                    <img src="" alt="" class="img-thumbnail img-responsive img-source" style="display: none">
+                </div>
+
+                <hr>
+                <form class="form-horizontal box-form" style="display: none">
+                    <div class="input-group">
+                        <span class="input-group-addon">width</span>
+                        <input type="text" class="form-control" aria-label="Width in pixel" name="width">
+                        <span class="input-group-addon">px</span>
+                    </div>
+                    <br/>
+
+                    <div class="input-group demo2">
+                        <span class="input-group-addon">color</span>
+                        <input type="text" value="#ffffff" class="form-control" name="color"/>
+                        <span class="input-group-addon"><i></i></span>
+                    </div>
+                    <br/>
+
+                    <div class="input-group">
+                        <input type="submit" class="form-control" name="submit" value="Box It !">
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="col-md-6">
+                <div class="center-block">
+                    <h3>Result</h3>
+                </div>
+
+                <div class="center-block">
+                    <img src="" alt="" class="img-thumbnail img-responsive img-result" style="display: none">
                 </div>
             </div>
+        </div>
     </div>
     <!-- /#page-wrapper -->
 
@@ -110,11 +118,13 @@
 <script>
     $(function () {
         $('.demo2').colorpicker();
+        var imageName = false;
         $('#fileupload').fileupload({
             dataType: 'json',
-            submit : function(e, data) {
+            submit: function (e, data) {
                 $('.alert-danger').hide();
                 $('.img-source').hide();
+                $('.img-result').hide();
                 $('.upload-progress').css(
                     'width',
                     0 + '%'
@@ -127,6 +137,7 @@
                         $('.alert-danger').text(file.error);
                         $('.alert-danger').show();
                     } else {
+                        imageName = file.name;
                         $('.img-source').attr('src', file.url);
                         $('.img-source').show();
 
@@ -144,10 +155,48 @@
             }
         });
 
-        $('.box-form').submit(function(e){
+        $('.box-form').submit(function (e) {
             console.log('submit');
-            console.log($('input[name=width]').val());
-            console.log($('input[name=color]').val());
+            var width = $('input[name=width]').val();
+            var color = $('input[name=color]').val();
+            if (!width) {
+                $('.alert-danger').text('Invalid width');
+                $('.alert-danger').show();
+                return false;
+            }
+            if (!color) {
+                $('.alert-danger').text('Invalid width');
+                $('.alert-danger').show();
+                return false;
+            }
+            if (!imageName) {
+                $('.alert-danger').text('Invalid Image');
+                $('.alert-danger').show();
+                return false;
+            }
+            //submit
+            $.ajax({
+                type: "POST",
+                url: '/box.php',
+                data: {
+                    width: width,
+                    color: color,
+                    image_name: imageName
+                },
+                success: function (e, data) {
+                    console.log(data);
+                    if (data.error) {
+                        $('.alert-danger').text(data.error);
+                        $('.alert-danger').show();
+                    } else {
+                        $('.img-result').attr('src', data.url);
+                        $('.img-result').show();
+                    }
+
+                },
+                dataType: 'json'
+            });
+
             return false;
         });
     });

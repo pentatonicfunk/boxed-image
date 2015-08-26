@@ -1,5 +1,5 @@
 <?php session_start();
-
+$_SESSION['file_name'] = false;
 require('UploadHandler.php');
 $upload_handler = new UploadHandler(
     array(
@@ -14,7 +14,7 @@ $responseFromUploader = $upload_handler->get_response();
 $files = $responseFromUploader['files'];
 $absPath = false;
 foreach ($files as $file) {
-    $absPath = $file->name;
+    $_SESSION['file_name'] = $file->name;
 }
 
 
