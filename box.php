@@ -57,7 +57,6 @@ try {
 
 
     $background = imagecreatetruecolor($newDimX, $newDimX);
-    $result['$newDimX'] = $newDimX;
     $backgroundColor = imagecolorallocate($background, $r, $g, $b);
     imagefill($background, 0, 0, $backgroundColor);
 
@@ -66,17 +65,9 @@ try {
 
     imagecopy($background, $img, $sourceX, $sourceY, 0, 0, $widthOri, $heightOri);
 
-    $height = $width;
-    $ratio_orig = $widthOri / $heightOri;
 
-    if ($width / $height > $ratio_orig) {
-        $width = $height * $ratio_orig;
-    } else {
-        $height = $width / $ratio_orig;
-    }
-
-    $image_p = imagecreatetruecolor($width, $height);
-    imagecopyresampled($image_p, $background, 0, 0, 0, 0, $width, $height, $widthOri, $heightOri);
+    $image_p = imagecreatetruecolor($width, $width);
+    imagecopyresampled($image_p, $background, 0, 0, 0, 0, $width, $width, $newDimX, $newDimX);
 
     if (!is_dir(dirname(__FILE__) . '/files/' . session_id() . '/boxed/'))
         mkdir(dirname(__FILE__) . '/files/' . session_id() . '/boxed/', 0777, true);
