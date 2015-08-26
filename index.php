@@ -62,14 +62,16 @@
                         <img src="" alt="" class="img-thumbnail img-responsive img-source" style="display: none">
                     </div>
 
-                    <form class="form-horizontal">
+                    <hr>
+                    <form class="form-horizontal box-form" style="display: none">
                         <div class="input-group">
                             <span class="input-group-addon">width</span>
-                            <input type="text" class="form-control" aria-label="Width in pixel">
+                            <input type="text" class="form-control" aria-label="Width in pixel" name="width">
                             <span class="input-group-addon">px</span>
                         </div>
                         <div class="input-group demo2">
-                            <input type="text" value="" class="form-control" />
+                            <span class="input-group-addon">color</span>
+                            <input type="text" value="#ffffff" class="form-control" name="color"/>
                             <span class="input-group-addon"><i></i></span>
                         </div>
                     </form>
@@ -114,6 +116,7 @@
                     'width',
                     0 + '%'
                 );
+                $('.box-form').hide();
             },
             done: function (e, data) {
                 $.each(data.result.files, function (index, file) {
@@ -125,6 +128,7 @@
                         $('.img-source').show();
 
                         //show form
+                        $('.box-form').show();
                     }
                 });
             },
@@ -135,6 +139,12 @@
                     progress + '%'
                 );
             }
+        });
+
+        $('.box-form').submit(function(e){
+            console.log($('input[name=width]').val());
+            console.log($('input[name=color]').val());
+            return false;
         });
     });
 </script>
