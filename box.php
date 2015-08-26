@@ -63,13 +63,13 @@ try {
     $sourceX = ceil(($newDimX - $widthOri) / 2);
     $sourceY = ceil(($newDimX - $heightOri) / 2);
 
-    imagecopy($background, $img, $sourceX, $sourceY, 0, 0, $widthOri, $heightOri);
+    imagecopyresampled($background, $img, $sourceX, $sourceY, 0, 0, $newDimX, $newDimX, $widthOri, $heightOri);
 
     $height = $width;
     $ratio_orig = $widthOri / $heightOri;
 
-    if ($width / $width > $ratio_orig) {
-        $width = $width * $ratio_orig;
+    if ($width / $height > $ratio_orig) {
+        $width = $height * $ratio_orig;
     } else {
         $height = $width / $ratio_orig;
     }
