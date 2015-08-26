@@ -51,6 +51,9 @@
                     </div>
 
                     <input id="fileupload" type="file" name="files" data-url="upload.php">
+
+                    <img src="" alt="" class="img-thumbnail img-responsive img-source" style="display: none">
+
                 </div>
                 <div class="col-md-6">
                     <div class="center-block">
