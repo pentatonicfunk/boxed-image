@@ -45,7 +45,9 @@
                         <h3>Upload</h3>
                     </div>
 
-                    <p class="bg-danger" style="display: none"></p>
+                    <div class="alert alert-danger" role="alert" style="display: none">
+                    </div>
+
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
                         </div>
@@ -85,7 +87,7 @@
         $('#fileupload').fileupload({
             dataType: 'json',
             submit : function(e, data) {
-                $('.bg-danger').hide();
+                $('.alert-danger').hide();
                 $('.img-source').hide();
                 $('.progress-bar').css(
                     'width',
@@ -95,8 +97,8 @@
             done: function (e, data) {
                 $.each(data.result.files, function (index, file) {
                     if (file.error) {
-                        $('.bg-danger').text(file.error);
-                        $('.bg-danger').show();
+                        $('.alert-danger').text(file.error);
+                        $('.alert-danger').show();
                     } else {
                         $('.img-source').attr('src', file.url);
                         $('.img-source').show();
