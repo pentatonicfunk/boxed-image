@@ -72,6 +72,7 @@
 <!-- Custom Theme JavaScript -->
 <script src="assets/js/sb-admin-2.js"></script>
 
+<script src="assets/js/jquery.ui.widget.js"></script>
 <script src="assets/js/jquery.iframe-transport.js"></script>
 <script src="assets/js/jquery.fileupload.js"></script>
 <script>
