@@ -43,6 +43,13 @@
                     <div class="center-block">
                         <h3>Upload</h3>
                     </div>
+
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        </div>
+                    </div>
+
+                    <input id="fileupload" type="file" name="file" data-url="upload.php">
                 </div>
                 <div class="col-md-6">
                     <div class="center-block">
@@ -65,6 +72,26 @@
 <!-- Custom Theme JavaScript -->
 <script src="assets/js/sb-admin-2.js"></script>
 
-
+<script src="assets/js/jquery.iframe-transport.js"></script>
+<script src="assets/js/jquery.fileupload.js"></script>
+<script>
+    $(function () {
+        $('#fileupload').fileupload({
+            dataType: 'json',
+            done: function (e, data) {
+                $.each(data.result.files, function (index, file) {
+                    $('<p/>').text(file.name).appendTo(document.body);
+                });
+            },
+            progressall: function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('.progress-bar').css(
+                    'width',
+                    progress + '%'
+                );
+            }
+        });
+    });
+</script>
 </body>
 </html>
