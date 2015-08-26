@@ -73,9 +73,10 @@
                     <div class="input-group demo2">
                         <span class="input-group-addon">background color</span>
                         <input type="text" value="#ffffff" class="form-control" name="background color"/>
-                        <span class="input-group-addon"><i></i></span>
+                        <span class="input-group-addon coloraddon"><i></i></span>
                     </div>
-                        <input type="submit" class="form-control" name="submit" value="Box It !">
+                    <br/>
+                        <input type="submit" class="form-control btn btn-success" name="submit" value="Box It !">
                 </form>
 
 
@@ -111,7 +112,9 @@
 <script src="assets/js/bootstrap-colorpicker.js"></script>
 <script>
     $(function () {
-        $('.demo2').colorpicker();
+        $('.demo2').colorpicker({
+            component: '.coloraddon'
+        });
         var imageName = false;
         $('#fileupload').fileupload({
             dataType: 'json',
