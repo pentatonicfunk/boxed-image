@@ -57,13 +57,14 @@ try {
 
 
     $background = imagecreatetruecolor($newDimX, $newDimX);
+    $result['$newDimX'] = $newDimX;
     $backgroundColor = imagecolorallocate($background, $r, $g, $b);
     imagefill($background, 0, 0, $backgroundColor);
 
     $sourceX = ceil(($newDimX - $widthOri) / 2);
     $sourceY = ceil(($newDimX - $heightOri) / 2);
 
-    imagecopyresampled($background, $img, $sourceX, $sourceY, 0, 0, $newDimX, $newDimX, $widthOri, $heightOri);
+    imagecopy($background, $img, $sourceX, $sourceY, 0, 0, $widthOri, $heightOri);
 
     $height = $width;
     $ratio_orig = $widthOri / $heightOri;
@@ -80,7 +81,16 @@ try {
     if (!is_dir(dirname(__FILE__) . '/files/' . session_id() . '/boxed/'))
         mkdir(dirname(__FILE__) . '/files/' . session_id() . '/boxed/', 0777, true);
 
-    $res = imagejpeg($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/' . $_SESSION['file_name'], 96);
+    if ($extension == "gif") {
+        $res = imagegif($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/' . $_SESSION['file_name']);
+    } else if ($extension == "png") {
+        $res = imagepng($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/' . $_SESSION['file_name'], 96);
+    } else {
+        $res = imagejpeg($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/' . $_SESSION['file_name'], 96);
+    }
+
+
+
 
     if (!$res)
         throw new Exception('Failed To Create Boxed Image');
