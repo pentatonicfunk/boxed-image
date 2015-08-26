@@ -15,8 +15,7 @@ try {
     if (!$width || $width > 2048)
         throw new Exception('Invalid Width');
 
-    $mCol = preg_match('^#(?:[0-9a-fA-F]{3}){1,2}$', $color, $matches);
-    if (!$mCol)
+    if (!preg_match('/^#[a-f0-9]{6}$/i', $color))
         throw new Exception('Invalid Background Color');
 
     $hex = str_replace("#", "", $color);
