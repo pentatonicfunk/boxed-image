@@ -40,10 +40,14 @@
     <div id="page-wrapper" style="margin: 0">
             <div class="row">
                 <div class="col-md-6">
-                    Upload here
+                    <div class="center-block">
+                        <h3>Upload</h3>
+                    </div>
                 </div>
                 <div class="col-md-6">
-                    Result here
+                    <div class="center-block">
+                        <h3>Result</h3>
+                    </div>
                 </div>
             </div>
     </div>
