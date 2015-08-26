@@ -50,7 +50,7 @@
                         </div>
                     </div>
 
-                    <input id="fileupload" type="file" name="file" data-url="upload.php">
+                    <input id="fileupload" type="file" name="files" data-url="upload.php">
                 </div>
                 <div class="col-md-6">
                     <div class="center-block">
