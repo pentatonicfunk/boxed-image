@@ -70,15 +70,12 @@
                         <input type="text" class="form-control" aria-label="Width in pixel" name="width">
                         <span class="input-group-addon">px</span>
                     </div>
-                    <br/>
-
                     <div class="input-group demo2">
                         <span class="input-group-addon">color</span>
-                        <input type="text" value="#ffffff" class="form-control" name="color"/>
+                        <input type="text" value="#ffffff" class="form-control" name="background color"/>
                         <span class="input-group-addon"><i></i></span>
                     </div>
-                    <br/>
-
+                    <hr/>
                     <div class="input-group">
                         <input type="submit" class="form-control" name="submit" value="Box It !">
                     </div>
