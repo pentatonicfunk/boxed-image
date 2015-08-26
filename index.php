@@ -71,14 +71,11 @@
                         <span class="input-group-addon">px</span>
                     </div>
                     <div class="input-group demo2">
-                        <span class="input-group-addon">color</span>
+                        <span class="input-group-addon">background color</span>
                         <input type="text" value="#ffffff" class="form-control" name="background color"/>
                         <span class="input-group-addon"><i></i></span>
                     </div>
-                    <hr/>
-                    <div class="input-group">
                         <input type="submit" class="form-control" name="submit" value="Box It !">
-                    </div>
                 </form>
 
 
