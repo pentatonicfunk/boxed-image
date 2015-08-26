@@ -19,6 +19,7 @@
 
     <!-- Custom CSS -->
     <link href="assets/css/sb-admin-2.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-colorpicker.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -61,6 +62,19 @@
                         <img src="" alt="" class="img-thumbnail img-responsive img-source" style="display: none">
                     </div>
 
+                    <form class="form-horizontal">
+                        <div class="input-group">
+                            <span class="input-group-addon">width</span>
+                            <input type="text" class="form-control" aria-label="Width in pixel">
+                            <span class="input-group-addon">px</span>
+                        </div>
+                        <div class="input-group demo2">
+                            <input type="text" value="" class="form-control" />
+                            <span class="input-group-addon"><i></i></span>
+                        </div>
+                    </form>
+
+
 
                 </div>
                 <div class="col-md-6">
@@ -87,8 +101,10 @@
 <script src="assets/js/jquery.ui.widget.js"></script>
 <script src="assets/js/jquery.iframe-transport.js"></script>
 <script src="assets/js/jquery.fileupload.js"></script>
+<script src="assets/js/bootstrap-colorpicker.js"></script>
 <script>
     $(function () {
+        $('.demo2').colorpicker();
         $('#fileupload').fileupload({
             dataType: 'json',
             submit : function(e, data) {
@@ -107,6 +123,8 @@
                     } else {
                         $('.img-source').attr('src', file.url);
                         $('.img-source').show();
+
+                        //show form
                     }
                 });
             },
