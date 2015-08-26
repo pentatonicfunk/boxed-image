@@ -75,7 +75,7 @@ try {
     if ($extension == "gif") {
         $res = imagegif($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/' . $_SESSION['file_name']);
     } else if ($extension == "png") {
-        $res = imagepng($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/' . $_SESSION['file_name'], 96);
+        $res = imagepng($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/' . $_SESSION['file_name']);
     } else {
         $res = imagejpeg($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/' . $_SESSION['file_name'], 96);
     }
