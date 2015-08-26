@@ -74,6 +74,9 @@
                             <input type="text" value="#ffffff" class="form-control" name="color"/>
                             <span class="input-group-addon"><i></i></span>
                         </div>
+                        <div class="input-group">
+                            <input type="submit" class="form-control" name="submit" value="Box It !">
+                        </div>
                     </form>
 
 
@@ -142,6 +145,7 @@
         });
 
         $('.box-form').submit(function(e){
+            console.log('submit');
             console.log($('input[name=width]').val());
             console.log($('input[name=color]').val());
             return false;
