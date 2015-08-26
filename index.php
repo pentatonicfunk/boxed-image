@@ -37,8 +37,15 @@
 
     </nav>
 
-    <div id="page-wrapper">
-            index
+    <div id="page-wrapper" style="margin: 0">
+            <div class="row">
+                <div class="col-md-6">
+                    Upload here
+                </div>
+                <div class="col-md-6">
+                    Result here
+                </div>
+            </div>
     </div>
     <!-- /#page-wrapper -->
 
