@@ -6,10 +6,18 @@ $upload_handler = new UploadHandler(
         'accept_file_types' => '/\.(gif|jpe?g|png)$/i',
         'user_dirs'         => true,
         'print_response'    => false,
-        'thumbnail'         => array(
-            'max_width'  => 200,
-            'max_height' => 200,
+        'image_versions'    => array(
+            // The empty image version key defines options for the original image:
+            '' => array(
+                // Automatically rotate images based on EXIF meta data:
+                'auto_orient' => true
+            ),
+            'thumbnail' => array(
+                'max_width'  => 200,
+                'max_height' => 200,
+            ),
         ),
+
     )
 );
 
