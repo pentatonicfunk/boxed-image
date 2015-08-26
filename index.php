@@ -67,7 +67,7 @@
                 <form class="form-horizontal box-form" style="display: none">
                     <div class="input-group">
                         <span class="input-group-addon">width</span>
-                        <input type="text" class="form-control" aria-label="Width in pixel" name="width">
+                        <input type="text" class="form-control" aria-label="Width in pixel" name="width" value="640">
                         <span class="input-group-addon">px</span>
                     </div>
                     <div class="input-group demo2">

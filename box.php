@@ -8,11 +8,11 @@ try {
     if (!$_SESSION['file_name'])
         throw new Exception('No Image Selected');
 
-    $width = $_POST['width'];
+    $width = (int)$_POST['width'];
     $color = $_POST['color'];
 
 
-    if (!$width || !filter_var($width, FILTER_VALIDATE_INT) || $width > 2048)
+    if (!$width || $width > 2048)
         throw new Exception('Invalid Width');
 
     preg_match('^#(?:[0-9a-fA-F]{3}){1,2}$', $color, $matches);
