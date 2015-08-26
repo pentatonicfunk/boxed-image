@@ -49,13 +49,18 @@
                     </div>
 
                     <div class="progress">
-                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <div class="upload-progress progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                            Upload Progress
                         </div>
                     </div>
 
                     <input id="fileupload" type="file" name="files" data-url="upload.php">
+                    <hr/>
 
-                    <img src="" alt="" class="img-thumbnail img-responsive img-source" style="display: none">
+                    <div class="center-block">
+                        <img src="" alt="" class="img-thumbnail img-responsive img-source" style="display: none">
+                    </div>
+
 
                 </div>
                 <div class="col-md-6">
@@ -89,7 +94,7 @@
             submit : function(e, data) {
                 $('.alert-danger').hide();
                 $('.img-source').hide();
-                $('.progress-bar').css(
+                $('.upload-progress').css(
                     'width',
                     0 + '%'
                 );
@@ -107,7 +112,7 @@
             },
             progressall: function (e, data) {
                 var progress = parseInt(data.loaded / data.total * 100, 10);
-                $('.progress-bar').css(
+                $('.upload-progress').css(
                     'width',
                     progress + '%'
                 );
