@@ -124,7 +124,7 @@ try {
         throw new Exception('Wrong Parameter');
 
     $highResFile = dirname(__FILE__) . '/files/' . $base_id . '/boxed/' . $id;
-    $thumbFile = dirname(__FILE__) . '/files/' . $base_id . '/boxed/thumbnail' . $id;
+    $thumbFile = dirname(__FILE__) . '/files/' . $base_id . '/boxed/thumbnail/' . $id;
 
     if (!is_file($highResFile) || !is_file($thumbFile))
         throw new Exception('File Not Found');

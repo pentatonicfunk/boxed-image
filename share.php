@@ -23,10 +23,10 @@ try {
         throw new Exception('Wrong Parameter');
 
     $highResFile = dirname(__FILE__) . '/files/' . $base_id . '/boxed/' . $id;
-    $thumbFile = dirname(__FILE__) . '/files/' . $base_id . '/boxed/thumbnail' . $id;
+    $thumbFile = dirname(__FILE__) . '/files/' . $base_id . '/boxed/thumbnail/' . $id;
 
     $highResUrl = get_full_url() . '/files/' . $base_id . '/boxed/' . $id;
-    $thumbUrl= get_full_url() . '/files/' . $base_id . '/boxed/thumbnail' . $id;
+    $thumbUrl= get_full_url() . '/files/' . $base_id . '/boxed/thumbnail/' . $id;
 
     $downLink = get_full_url() . '/download.php?base_id=' . urlencode($base_id) . '&id=' . urlencode($id);
 
