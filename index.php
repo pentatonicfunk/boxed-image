@@ -60,7 +60,9 @@
                 <hr/>
 
                 <div class="text-center center-block">
-                    <img src="" alt="" class="img-thumbnail img-responsive img-source" style="display: none">
+                    <a href="#" data-toggle="modal" data-target="#modalImgSource">
+                        <img src="" alt="" class="img-thumbnail img-responsive img-source" style="display: none">
+                    </a>
                 </div>
 
                 <hr>
@@ -72,7 +74,7 @@
                     </div>
                     <div class="input-group demo2">
                         <span class="input-group-addon">background color</span>
-                        <input type="text" value="#ffffff" class="form-control" name="color"/>
+                        <input type="text" value="#eeefff" class="form-control" name="color"/>
                         <span class="input-group-addon coloraddon"><i></i></span>
                     </div>
                     <br/>
@@ -96,6 +98,24 @@
         </div>
     </div>
     <!-- /#page-wrapper -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalImgSource" tabindex="-1" role="dialog" aria-labelledby="modalImgSource">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalImgSource">Image Source</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="" alt="" class="img-thumbnail img-responsive img-source-big" style="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <!-- /#wrapper -->
@@ -141,6 +161,7 @@
                     } else {
                         imageName = file.name;
                         $('.img-source').attr('src', file.thumbnailUrl);
+                        $('.img-source-big').attr('src', file.url);
                         $('.img-source').show();
 
                         //show form
