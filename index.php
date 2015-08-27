@@ -11,6 +11,16 @@
 
     <title>Boxed Image Convert</title>
 
+    <meta property="og:title" content="Boxed Image Converter Without Cropping" />
+    <meta property="og:site_name" content="ImgBoxer"/>
+    <meta property="og:url" content="http://boxed.kuncoro.id" />
+    <meta property="og:description" content="The simplest way to create boxed image, Without Cropping" />
+    <meta property="fb:app_id" content="289936593494" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="http://boxed.kuncoro.id/assets/img/maxresdefault.jpg"/>
+
+
     <!-- Bootstrap Core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 

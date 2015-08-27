@@ -35,7 +35,7 @@ try {
     $path_info = pathinfo($imageOri);
     $extension = $path_info['extension'];
 
-    $fileBaseName = time() . '_' . uniqid("", true) . $extension;
+    $fileBaseName = time() . '_' . uniqid("", true) . '.' . $extension;
 
     // Get sizes
     list($widthOri, $heightOri) = @getimagesize($imageOri);
@@ -74,11 +74,11 @@ try {
     $image_t = imagecreatetruecolor(200, 200);
     imagecopyresampled($image_t, $background, 0, 0, 0, 0, 200, 200, $newDimX, $newDimX);
     if ($extension == "gif") {
-        $resT = imagegif($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/thumbnail/' . $fileBaseName);
+        $resT = imagegif($image_t, dirname(__FILE__) . '/files/' . session_id() . '/boxed/thumbnail/' . $fileBaseName);
     } else if ($extension == "png") {
-        $resT = imagepng($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/thumbnail/' . $fileBaseName);
+        $resT = imagepng($image_t, dirname(__FILE__) . '/files/' . session_id() . '/boxed/thumbnail/' . $fileBaseName);
     } else {
-        $resT = imagejpeg($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/thumbnail/' . $fileBaseName, 96);
+        $resT = imagejpeg($image_t, dirname(__FILE__) . '/files/' . session_id() . '/boxed/thumbnail/' . $fileBaseName, 96);
     }
 
 
@@ -101,10 +101,10 @@ try {
         throw new Exception('Failed To Create Boxed Image');
 
 
-    $result['url'] = get_full_url() . '/files/' . session_id() . '/boxed/' . $fileBaseName;
-    $result['thumbnailUrl'] = get_full_url() . '/files/' . session_id() . '/boxed/thumbnail/' . $fileBaseName;
-    $result['shareLink'] = get_full_url() . '/share.php?base_id=' . session_id() . '&id=' . $fileBaseName;
-    $result['downLink'] = get_full_url() . '/download.php?base_id=' . session_id() . '&id=' . $fileBaseName;
+    $result['url'] = get_full_url() . '/files/' . urlencode(session_id()) . '/boxed/' . urlencode($fileBaseName);
+    $result['thumbnailUrl'] = get_full_url() . '/files/' . urlencode(session_id()) . '/boxed/thumbnail/' . urlencode($fileBaseName);
+    $result['shareLink'] = get_full_url() . '/share.php?base_id=' . urlencode(session_id()) . '&id=' . urlencode($fileBaseName);
+    $result['downLink'] = get_full_url() . '/download.php?base_id=' . urlencode(session_id()) . '&id=' . urlencode($fileBaseName);
     $result['width'] = $width;
     $result['color'] = $color;
 } catch (Exception $e) {
