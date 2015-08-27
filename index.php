@@ -103,7 +103,7 @@
 
                 <div class="text-center center-block">
 
-                    <div class="media hide res-media">
+                    <div class="media res-media" sty>
                         <div class="media-left">
                             <a href="#" data-toggle="modal" data-target="#modalImgResult">
                                 <img src="" alt="" class="img-thumbnail img-responsive img-result" style="display: none">

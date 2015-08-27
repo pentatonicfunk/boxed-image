@@ -22,8 +22,11 @@ try {
     if (!$base_id || !$id)
         throw new Exception('Wrong Parameter');
 
-    $highResFile = get_full_url() . '/files/' . $base_id . '/boxed/' . $id;
-    $thumbFile = get_full_url() . '/files/' . $base_id . '/boxed/thumbnail' . $id;
+    $highResFile = dirname(__FILE__) . '/files/' . $base_id . '/boxed/' . $id;
+    $thumbFile = dirname(__FILE__) . '/files/' . $base_id . '/boxed/thumbnail' . $id;
+
+    $highResUrl = get_full_url() . '/files/' . $base_id . '/boxed/' . $id;
+    $thumbUrl= get_full_url() . '/files/' . $base_id . '/boxed/thumbnail' . $id;
 
     $downLink = get_full_url() . '/download.php?base_id=' . urlencode($base_id) . '&id=' . urlencode($id);
 
@@ -55,7 +58,7 @@ try {
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
 
-    <meta property="og:image" content="<?php echo $highResFile ?>"/>
+    <meta property="og:image" content="<?php echo $highResUrl ?>"/>
 
 
     <!-- Bootstrap Core CSS -->
@@ -94,12 +97,12 @@ try {
                 </div>
 
                 <div class="text-center center-block">
-                        <img src="<?php echo $thumbFile ?>" alt="" class="img-thumbnail img-responsive img-source" style="">
+                        <img src="<?php echo $thumbUrl ?>" alt="" class="img-thumbnail img-responsive img-source" style="">
                 </div>
 
                 <hr>
                 <div class="text-center center-block">
-                    <img src="<?php echo $highResFile ?>" alt="" class="img-thumbnail img-responsive img-source" style="">
+                    <img src="<?php echo $highResUrl ?>" alt="" class="img-thumbnail img-responsive img-source" style="">
                 </div>
                 <hr>
                 <a href="<?php echo $downLink ?>" class="btn btn-success btn-lg">Download</a>

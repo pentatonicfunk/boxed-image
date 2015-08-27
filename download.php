@@ -123,8 +123,8 @@ try {
     if (!$base_id || !$id)
         throw new Exception('Wrong Parameter');
 
-    $highResFile = get_full_url() . '/files/' . $base_id . '/boxed/' . $id;
-    $thumbFile = get_full_url() . '/files/' . $base_id . '/boxed/thumbnail' . $id;
+    $highResFile = dirname(__FILE__) . '/files/' . $base_id . '/boxed/' . $id;
+    $thumbFile = dirname(__FILE__) . '/files/' . $base_id . '/boxed/thumbnail' . $id;
 
     if (!is_file($highResFile) || !is_file($thumbFile))
         throw new Exception('File Not Found');
