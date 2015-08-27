@@ -86,6 +86,9 @@
                     <h3>Result</h3>
                 </div>
 
+                <div class="loading-progress"></div>
+                <hr/>
+
                 <div class="text-center center-block">
                     <img src="" alt="" class="img-thumbnail img-responsive img-result" style="display: none">
                 </div>
@@ -110,8 +113,14 @@
 <script src="assets/js/jquery.iframe-transport.js"></script>
 <script src="assets/js/jquery.fileupload.js"></script>
 <script src="assets/js/bootstrap-colorpicker.js"></script>
+<script src="assets/js/jquery.progresstimer.min.js"></script>
 <script>
     $(function () {
+        var progress = $(".loading-progress").progressTimer({
+            onFinish: function () {
+            }
+        });
+
         $('.demo2').colorpicker({
             component: '.coloraddon'
         });
@@ -193,6 +202,14 @@
 
                 },
                 dataType: 'json'
+            }).error(function() {
+                progress.progressTimer('error', {
+                    errorText: 'ERROR!',
+                    onFinish: function () {
+                    }
+                });
+            }).done(function(){
+                progress.progressTimer('complete');
             });
 
             return false;
