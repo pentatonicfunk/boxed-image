@@ -53,7 +53,7 @@ try {
 
     <meta property="og:title" content="Boxed Image Converter Without Cropping" />
     <meta property="og:site_name" content="ImgBoxer"/>
-    <meta property="og:url" content="http://boxed.kuncoro.id" />
+    <meta property="og:url" content="<?php echo $shareLink ?>" />
     <meta property="og:description" content="The simplest way to create boxed image, Without Cropping" />
     <meta property="fb:app_id" content="289936593494" />
     <meta property="og:locale" content="en_US" />
