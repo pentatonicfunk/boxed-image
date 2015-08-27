@@ -106,7 +106,7 @@
                     <div class="media res-media" style="display: none">
                         <div class="media-left">
                             <a href="#" data-toggle="modal" data-target="#modalImgResult">
-                                <img src="" alt="" class="img-thumbnail img-responsive img-result" style="display: none">
+                                <img src="" alt="" class="img-result" style="display: none">
                             </a>
                         </div>
                         <div class="media-body">
