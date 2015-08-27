@@ -86,8 +86,8 @@
                     <h3>Result</h3>
                 </div>
 
-                <div class="loading-progress"></div>
-                <hr/>
+
+                <div id="oloader"></div>
 
                 <div class="text-center center-block">
                     <img src="" alt="" class="img-thumbnail img-responsive img-result" style="display: none">
@@ -113,6 +113,7 @@
 <script src="assets/js/jquery.iframe-transport.js"></script>
 <script src="assets/js/jquery.fileupload.js"></script>
 <script src="assets/js/bootstrap-colorpicker.js"></script>
+<script src="assets/js/jquery.oLoader.min.js"></script>
 <script>
     $(function () {
 
@@ -197,17 +198,16 @@
 
                 },
                 dataType: 'json',
-                xhr: function () {
-                    var xhr = new window.XMLHttpRequest();
-                    //Download progress
-                    xhr.addEventListener("progress", function (evt) {
-                        if (evt.lengthComputable) {
-                            var percentComplete = evt.loaded / evt.total;
-                            //Do something with download progress
-                            console.log(percentComplete);
-                        }
-                    }, false);
-                    return xhr;
+                beforeSend: function(xhr, settings) {
+                    $('#oloader').oLoader({
+                        backgroundColor:'#f00',
+                        fadeInTime: 500,
+                        fadeOutTime: 1000,
+                        fadeLevel: 0.5
+                    });
+                },
+                complete : function(xhr, status) {
+                    $('#oloader').oLoader('hide');
                 }
             });
 
