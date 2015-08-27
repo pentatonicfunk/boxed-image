@@ -76,7 +76,7 @@
                         <span class="input-group-addon coloraddon"><i></i></span>
                     </div>
                     <br/>
-                        <input type="submit" class="form-control btn btn-success" name="submit" value="Box It !">
+                    <input type="submit" class="form-control btn btn-success" name="submit" value="Box It !">
                 </form>
 
 
@@ -113,13 +113,8 @@
 <script src="assets/js/jquery.iframe-transport.js"></script>
 <script src="assets/js/jquery.fileupload.js"></script>
 <script src="assets/js/bootstrap-colorpicker.js"></script>
-<script src="assets/js/jquery.progresstimer.min.js"></script>
 <script>
     $(function () {
-        var progress = $(".loading-progress").progressTimer({
-            onFinish: function () {
-            }
-        });
 
         $('.demo2').colorpicker({
             component: '.coloraddon'
@@ -201,15 +196,19 @@
                     }
 
                 },
-                dataType: 'json'
-            }).error(function() {
-                progress.progressTimer('error', {
-                    errorText: 'ERROR!',
-                    onFinish: function () {
-                    }
-                });
-            }).done(function(){
-                progress.progressTimer('complete');
+                dataType: 'json',
+                xhr: function () {
+                    var xhr = new window.XMLHttpRequest();
+                    //Download progress
+                    xhr.addEventListener("progress", function (evt) {
+                        if (evt.lengthComputable) {
+                            var percentComplete = evt.loaded / evt.total;
+                            //Do something with download progress
+                            console.log(percentComplete);
+                        }
+                    }, false);
+                    return xhr;
+                }
             });
 
             return false;
