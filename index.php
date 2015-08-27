@@ -160,8 +160,8 @@
                         $('.alert-danger').show();
                     } else {
                         imageName = file.name;
-                        $('.img-source').attr('src', file.thumbnailUrl);
-                        $('.img-source-big').attr('src', file.url);
+                        $('.img-source').attr('src', file.thumbnailUrl + '?_' + $.now());
+                        $('.img-source-big').attr('src', file.url + '?_' + $.now());
                         $('.img-source').show();
 
                         //show form
@@ -213,7 +213,7 @@
                         $('.alert-danger').show();
                     } else {
                         $('.alert-danger').hide();
-                        $('.img-result').attr('src', data.url);
+                        $('.img-result').attr('src', data.url + '?_' + $.now());
                         $('.img-result').show();
                     }
 
