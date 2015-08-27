@@ -102,9 +102,18 @@
                 <div id="oloader"></div>
 
                 <div class="text-center center-block">
-                    <a href="#" data-toggle="modal" data-target="#modalImgResult">
-                        <img src="" alt="" class="img-thumbnail img-responsive img-result" style="display: none">
-                    </a>
+
+                    <div class="media hide res-media">
+                        <div class="media-left">
+                            <a href="#" data-toggle="modal" data-target="#modalImgResult">
+                                <img src="" alt="" class="img-thumbnail img-responsive img-result" style="display: none">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Click The Picture to See in Full Resution</h4>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -186,6 +195,7 @@
                 $('.alert-danger').hide();
                 $('.img-source').hide();
                 $('.img-result').hide();
+                $('.res-media').hide();
                 $('.upload-progress').css(
                     'width',
                     0 + '%'
@@ -257,6 +267,7 @@
                         $('.share-link').attr('href', data.shareLink);
                         $('.down-link').attr('href', data.downLink);
                         $('.img-result').show();
+                        $('.res-media').show();
                     }
 
                 },
