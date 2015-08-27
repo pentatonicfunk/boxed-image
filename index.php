@@ -148,8 +148,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" type="button" class="btn btn-primary share-link" data-dismiss="modal">Get Sharable Link</a>
-                    <a href="#" type="button" class="btn btn-success down-link" data-dismiss="modal">Download</a>
+                    <a href="#" type="button" class="btn btn-primary share-link" target="_blank">Get Sharable Link</a>
+                    <a href="#" type="button" class="btn btn-success down-link">Download</a>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
