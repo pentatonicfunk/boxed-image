@@ -201,6 +201,7 @@
                 beforeSend: function(xhr, settings) {
                     $('#oloader').oLoader({
                         backgroundColor:'#f00',
+                        image: 'img/loader.gif',
                         fadeInTime: 500,
                         fadeOutTime: 1000,
                         fadeLevel: 0.5
