@@ -78,6 +78,17 @@ try {
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <style>
+        ul.share-buttons{
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.share-buttons li{
+            display: inline;
+        }
+        </style>
+
 </head>
 
 <body>
@@ -105,7 +116,22 @@ try {
                     <img src="<?php echo $highResUrl ?>" alt="" class="img-thumbnail img-responsive img-source" style="">
                 </div>
                 <hr>
+                <ul class="share-buttons">
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fboxed.kuncoro.id%2F&t=" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><img src="images/flat_web_icon_set/color/Facebook.png"></a></li>
+                    <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fboxed.kuncoro.id%2F&text=:%20http%3A%2F%2Fboxed.kuncoro.id%2F&via=pentatonicfunk" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL)); return false;"><img src="images/flat_web_icon_set/color/Twitter.png"></a></li>
+                    <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fboxed.kuncoro.id%2F" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><img src="images/flat_web_icon_set/color/Google+.png"></a></li>
+                    <li><a href="http://www.tumblr.com/share?v=3&u=http%3A%2F%2Fboxed.kuncoro.id%2F&t=&s=" target="_blank" title="Post to Tumblr" onclick="window.open('http://www.tumblr.com/share?v=3&u=' + encodeURIComponent(document.URL) + '&t=' +  encodeURIComponent(document.title)); return false;"><img src="images/flat_web_icon_set/color/Tumblr.png"></a></li>
+                    <li><a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fboxed.kuncoro.id%2F&description=" target="_blank" title="Pin it" onclick="window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(document.URL) + '&description=' +  encodeURIComponent(document.title)); return false;"><img src="images/flat_web_icon_set/color/Pinterest.png"></a></li>
+                    <li><a href="https://getpocket.com/save?url=http%3A%2F%2Fboxed.kuncoro.id%2F&title=" target="_blank" title="Add to Pocket" onclick="window.open('https://getpocket.com/save?url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><img src="images/flat_web_icon_set/color/Pocket.png"></a></li>
+                    <li><a href="http://www.reddit.com/submit?url=http%3A%2F%2Fboxed.kuncoro.id%2F&title=" target="_blank" title="Submit to Reddit" onclick="window.open('http://www.reddit.com/submit?url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><img src="images/flat_web_icon_set/color/Reddit.png"></a></li>
+                    <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fboxed.kuncoro.id%2F&title=&summary=&source=http%3A%2F%2Fboxed.kuncoro.id%2F" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><img src="images/flat_web_icon_set/color/LinkedIn.png"></a></li>
+                    <li><a href="http://wordpress.com/press-this.php?u=http%3A%2F%2Fboxed.kuncoro.id%2F&t=&s=" target="_blank" title="Publish on WordPress" onclick="window.open('http://wordpress.com/press-this.php?u=' + encodeURIComponent(document.URL) + '&t=' +  encodeURIComponent(document.title)); return false;"><img src="images/flat_web_icon_set/color/Wordpress.png"></a></li>
+                    <li><a href="https://pinboard.in/popup_login/?url=http%3A%2F%2Fboxed.kuncoro.id%2F&title=&description=" target="_blank" title="Save to Pinboard" onclick="window.open('https://pinboard.in/popup_login/?url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><img src="images/flat_web_icon_set/color/Pinboard.png"></a></li>
+                    <li><a href="mailto:?subject=&body=:%20http%3A%2F%2Fboxed.kuncoro.id%2F" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><img src="images/flat_web_icon_set/color/Email.png"></a></li>
+                </ul>
+                <hr>
                 <a href="<?php echo $downLink ?>" class="btn btn-success btn-lg">Download</a>
+
 
             </div>
         </div>
