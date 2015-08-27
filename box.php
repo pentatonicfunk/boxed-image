@@ -35,6 +35,8 @@ try {
     $path_info = pathinfo($imageOri);
     $extension = $path_info['extension'];
 
+    $fileBaseName = time() . '_' . uniqid("", true) . $extension;
+
     // Get sizes
     list($widthOri, $heightOri) = @getimagesize($imageOri);
 
@@ -66,6 +68,20 @@ try {
     imagecopy($background, $img, $sourceX, $sourceY, 0, 0, $widthOri, $heightOri);
 
 
+    if (!is_dir(dirname(__FILE__) . '/files/' . session_id() . '/boxed/thumbnail/'))
+        mkdir(dirname(__FILE__) . '/files/' . session_id() . '/boxed/thumbnail/', 0777, true);
+
+    $image_t = imagecreatetruecolor(200, 200);
+    imagecopyresampled($image_t, $background, 0, 0, 0, 0, 200, 200, $newDimX, $newDimX);
+    if ($extension == "gif") {
+        $resT = imagegif($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/thumbnail/' . $fileBaseName);
+    } else if ($extension == "png") {
+        $resT = imagepng($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/thumbnail/' . $fileBaseName);
+    } else {
+        $resT = imagejpeg($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/thumbnail/' . $fileBaseName, 96);
+    }
+
+
     $image_p = imagecreatetruecolor($width, $width);
     imagecopyresampled($image_p, $background, 0, 0, 0, 0, $width, $width, $newDimX, $newDimX);
 
@@ -73,21 +89,22 @@ try {
         mkdir(dirname(__FILE__) . '/files/' . session_id() . '/boxed/', 0777, true);
 
     if ($extension == "gif") {
-        $res = imagegif($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/' . $_SESSION['file_name']);
+        $res = imagegif($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/' . $fileBaseName);
     } else if ($extension == "png") {
-        $res = imagepng($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/' . $_SESSION['file_name']);
+        $res = imagepng($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/' . $fileBaseName);
     } else {
-        $res = imagejpeg($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/' . $_SESSION['file_name'], 96);
+        $res = imagejpeg($image_p, dirname(__FILE__) . '/files/' . session_id() . '/boxed/' . $fileBaseName, 96);
     }
-
-
 
 
     if (!$res)
         throw new Exception('Failed To Create Boxed Image');
 
 
-    $result['url'] = get_full_url() . '/files/' . session_id() . '/boxed/' . $_SESSION['file_name'];
+    $result['url'] = get_full_url() . '/files/' . session_id() . '/boxed/' . $fileBaseName;
+    $result['thumbnailUrl'] = get_full_url() . '/files/' . session_id() . '/boxed/thumbnail/' . $fileBaseName;
+    $result['shareLink'] = get_full_url() . '/share.php?base_id=' . session_id() . '&id=' . $fileBaseName;
+    $result['downLink'] = get_full_url() . '/download.php?base_id=' . session_id() . '&id=' . $fileBaseName;
     $result['width'] = $width;
     $result['color'] = $color;
 } catch (Exception $e) {

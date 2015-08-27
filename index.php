@@ -92,7 +92,9 @@
                 <div id="oloader"></div>
 
                 <div class="text-center center-block">
-                    <img src="" alt="" class="img-thumbnail img-responsive img-result" style="display: none">
+                    <a href="#" data-toggle="modal" data-target="#modalImgResult">
+                        <img src="" alt="" class="img-thumbnail img-responsive img-result" style="display: none">
+                    </a>
                 </div>
             </div>
         </div>
@@ -104,13 +106,40 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="modalImgSource">Image Source</h4>
                 </div>
                 <div class="modal-body">
-                    <img src="" alt="" class="img-thumbnail img-responsive img-source-big" style="">
+                    <div class="text-center center-block">
+                        <img src="" alt="" class="img-thumbnail img-responsive img-source-big" style="">
+                    </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalImgResult" tabindex="-1" role="dialog" aria-labelledby="modalImgResult">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalImgResult">Image Result</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center center-block">
+                        <img src="" alt="" class="img-thumbnail img-responsive img-result-big" style="">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" type="button" class="btn btn-primary share-link" data-dismiss="modal">Get Sharable Link</a>
+                    <a href="#" type="button" class="btn btn-success down-link" data-dismiss="modal">Download</a>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -213,22 +242,25 @@
                         $('.alert-danger').show();
                     } else {
                         $('.alert-danger').hide();
-                        $('.img-result').attr('src', data.url + '?_' + $.now());
+                        $('.img-result').attr('src', data.thumbnailUrl + '?_' + $.now());
+                        $('.img-result-big').attr('src', data.url + '?_' + $.now());
+                        $('.share-link').attr('href', data.shareLink);
+                        $('.down-link').attr('href', data.downLink);
                         $('.img-result').show();
                     }
 
                 },
                 dataType: 'json',
-                beforeSend: function(xhr, settings) {
+                beforeSend: function (xhr, settings) {
                     $('#oloader').oLoader({
-                        backgroundColor:'#f00',
+                        backgroundColor: '#f00',
                         image: 'assets/img/loader.gif',
                         fadeInTime: 500,
                         fadeOutTime: 1000,
                         fadeLevel: 0.5
                     });
                 },
-                complete : function(xhr, status) {
+                complete: function (xhr, status) {
                     $('#oloader').oLoader('hide');
                 }
             });
